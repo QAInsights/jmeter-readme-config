@@ -22,6 +22,11 @@ public class ReadMeSampler extends AbstractSampler {
         super.setEnabled(false);
     }
 
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
     public void setMarkdownContent(String content) {
         setProperty(new StringProperty(MARKDOWN_CONTENT, content));
     }
