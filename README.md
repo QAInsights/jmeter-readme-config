@@ -98,4 +98,4 @@ mvn test                   # runs JUnit 5 unit tests
 
 ## License
 
-[MIT](LICENSE)
+[MIT](./LICENSE.md)
