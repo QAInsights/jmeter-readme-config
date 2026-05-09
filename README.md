@@ -3,11 +3,11 @@
 > A JMeter sampler that lets you embed **Markdown documentation** directly inside your test plan  with a live GitHub-style preview and deep-link navigation to tree nodes.
 
 ## Screenshots
-![Markdown](./images/markdown.png)
-![Preview](./images/markdownpreview.png)
-![JMeter Deep Link](./images/jmeterdeeplink.png)
-![No Node](./images/nonode.png)
-![Always Disabled](./images/disabled.png)
+![Markdown](./images/Markdown.png)
+![Preview](./images/MarkdownPreview.png)
+![JMeter Deep Link](./images/JMeterDeeplink.png)
+![No Node](./images/NoNode.png)
+![Always Disabled](./images/Disabled.png)
 
 ---
 
