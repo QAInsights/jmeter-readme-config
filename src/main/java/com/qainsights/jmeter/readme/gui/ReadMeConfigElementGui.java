@@ -1,9 +1,9 @@
 package com.qainsights.jmeter.readme.gui;
 
 import com.qainsights.jmeter.readme.protocol.JMeterProtocolHandler;
+import com.qainsights.jmeter.readme.readme.ReadMeConfigElement;
 import com.qainsights.jmeter.readme.readme.ReadMeMarkdownRenderer;
-import com.qainsights.jmeter.readme.readme.ReadMeSampler;
-import org.apache.jmeter.samplers.gui.AbstractSamplerGui;
+import org.apache.jmeter.config.gui.AbstractConfigGui;
 import org.apache.jmeter.testelement.TestElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +16,9 @@ import java.awt.*;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
-public class ReadMeSamplerGui extends AbstractSamplerGui {
+public class ReadMeConfigElementGui extends AbstractConfigGui {
 
-    private static final Logger logger = LoggerFactory.getLogger(ReadMeSamplerGui.class);
+    private static final Logger logger = LoggerFactory.getLogger(ReadMeConfigElementGui.class);
     private Timer       debounceTimer;
     private JScrollPane  previewScroll;
     JTextArea markdownInput = new JTextArea();
@@ -35,8 +35,8 @@ public class ReadMeSamplerGui extends AbstractSamplerGui {
 
 
 
-    public ReadMeSamplerGui() {
-       logger.debug("Initializing ReadMeSamplerGui");
+    public ReadMeConfigElementGui() {
+       logger.debug("Initializing ReadMeConfigElementGui");
        init();
     }
 
@@ -123,7 +123,7 @@ public class ReadMeSamplerGui extends AbstractSamplerGui {
             if (!found) {
                 JOptionPane.showMessageDialog(SwingUtilities.getWindowAncestor(this),
                         "Node not found: " + href.substring(JMeterProtocolHandler.PROTOCOL.length()),
-                        "README Sampler", JOptionPane.WARNING_MESSAGE);
+                        "README Config Element", JOptionPane.WARNING_MESSAGE);
             }
         } else {
             // Open external links in system browser
@@ -150,114 +150,54 @@ public class ReadMeSamplerGui extends AbstractSamplerGui {
         logger.debug("Preview updated successfully");
     }
 
-    /**
-     * Get the component's resource name, which getStaticLabel uses to derive
-     * the component's label in the local language. The resource name is fixed,
-     * and does not vary with the selected language.
-     *
-     * <p>Normally this method should be overridden in preference to overriding
-     * getStaticLabel(). However where the resource name is not available or required,
-     * getStaticLabel() may be overridden instead.</p>
-     *
-     * @return the resource name
-     */
     @Override
     public String getLabelResource() {
-        return "README Sampler";
+        return "README Config Element";
     }
 
     @Override
     public String getStaticLabel() {
-        return "README Sampler";
+        return "README Config Element";
     }
 
-    /**
-     * JMeter test components are separated into a model and a GUI
-     * representation. The model holds the data and the GUI displays it. The GUI
-     * class is responsible for knowing how to create and initialize with data
-     * the model class that it knows how to display, and this method is called
-     * when new test elements are created.
-     *
-     * <p>Since 5.6.3, the default implementation is as follows, and subclasses should override
-     * {@link #makeTestElement()}
-     * <pre>
-     * public TestElement createTestElement() {
-     *     TestElement element = makeTestElement();
-     *     assignDefaultValues(element);
-     *     return el;
-     * }
-     * </pre>
-     *
-     * <p>
-     * Before 5.6.3 the canonical implementation was as follows, however, it is recommended to
-     * avoid overriding {@link #createTestElement()} and override {@link #makeTestElement()} instead.
-     * <pre>
-     * public TestElement createTestElement() {
-     *     TestElementXYZ el = new TestElementXYZ();
-     *     modifyTestElement(el);
-     *     return el;
-     * }
-     * </pre>
-     *
-     * @return the Test Element object that the GUI component represents.
-     */
     @Override
     public void modifyTestElement(TestElement element) {
-        logger.debug("Saving markdown content to sampler");
-        // disable README Sampler GUI update on modifyTestElement
+        logger.debug("Saving markdown content to config element");
 
         super.modifyTestElement(element);
-        if (element instanceof ReadMeSampler) {
-            ((ReadMeSampler) element).setMarkdownContent(markdownInput.getText());
+        if (element instanceof ReadMeConfigElement) {
+            ((ReadMeConfigElement) element).setMarkdownContent(markdownInput.getText());
         }
     }
 
     @Override
     public void configure(TestElement element) {
-        logger.debug("Loading markdown content from sampler");
+        logger.debug("Loading markdown content from config element");
         super.configure(element);
-        if (element instanceof ReadMeSampler) {
-            markdownInput.setText(((ReadMeSampler) element).getMarkdownContent());
+        if (element instanceof ReadMeConfigElement) {
+            markdownInput.setText(((ReadMeConfigElement) element).getMarkdownContent());
         }
     }
 
     @Override
     public TestElement createTestElement() {
         logger.debug("Creating test element");
-        ReadMeSampler readMeSampler = new ReadMeSampler();
-        modifyTestElement(readMeSampler);
+        ReadMeConfigElement readMeConfigElement = new ReadMeConfigElement();
+        modifyTestElement(readMeConfigElement);
         logger.debug("Test element created and modified");
-        return readMeSampler;
+        return readMeConfigElement;
     }
 
-    /**
-     * Creates the test element represented by the GUI component.
-     *
-     * @return a new {@link TestElement}
-     * @since 5.6.3
-     */
     @Override
     public TestElement makeTestElement() {
         return super.makeTestElement();
     }
 
-    /**
-     * Configures default values for element after its creation.
-     * Plugin authors should call this once in their {@link #createTestElement()} implementation.
-     *
-     * @param element test element to configure
-     * @since 5.6.3
-     */
     @Override
     public void assignDefaultValues(TestElement element) {
         super.assignDefaultValues(element);
     }
 
-    /**
-     * Returns whether a component of this type can be added to the test plan.
-     *
-     * @return true if the component can be added, false otherwise.
-     */
     @Override
     public boolean canBeAdded() {
         return super.canBeAdded();
