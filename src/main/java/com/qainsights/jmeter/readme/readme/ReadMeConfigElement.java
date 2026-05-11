@@ -7,22 +7,20 @@ import org.slf4j.LoggerFactory;
 
 public class ReadMeConfigElement extends ConfigTestElement {
 
-    private static final Logger logger = LoggerFactory.getLogger(ReadMeConfigElement.class);
     private static final String MARKDOWN_CONTENT = "ReadmeConfigElement.content";
 
     public ReadMeConfigElement() {
         setName("README Config Element");
-        setEnabled(false);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
-        super.setEnabled(false);
+        super.setEnabled(enabled);
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return super.isEnabled();
     }
 
     public void setMarkdownContent(String content) {

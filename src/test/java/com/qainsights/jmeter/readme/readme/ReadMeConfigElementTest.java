@@ -30,9 +30,9 @@ class ReadMeConfigElementTest {
         }
 
         @Test
-        @DisplayName("is disabled by default")
-        void isDisabled() {
-            assertFalse(configElement.isEnabled());
+        @DisplayName("is enabled by default")
+        void isEnabled() {
+            assertTrue(configElement.isEnabled());
         }
 
         @Test
@@ -47,25 +47,20 @@ class ReadMeConfigElementTest {
     class EnabledState {
 
         @Test
-        @DisplayName("stays disabled when setEnabled(true) is called")
-        void staysDisabledWhenEnabledSetTrue() {
-            configElement.setEnabled(true);
-            assertFalse(configElement.isEnabled());
-        }
-
-        @Test
-        @DisplayName("stays disabled when setEnabled(false) is called")
-        void staysDisabledWhenEnabledSetFalse() {
+        @DisplayName("can be disabled via setEnabled(false)")
+        void canBeDisabled() {
             configElement.setEnabled(false);
             assertFalse(configElement.isEnabled());
         }
 
         @Test
-        @DisplayName("remains disabled across multiple toggles")
-        void remainsDisabledAcrossMultipleToggles() {
-            configElement.setEnabled(true);
+        @DisplayName("toggles correctly across multiple calls")
+        void togglesCorrectly() {
             configElement.setEnabled(false);
+            assertFalse(configElement.isEnabled());
             configElement.setEnabled(true);
+            assertTrue(configElement.isEnabled());
+            configElement.setEnabled(false);
             assertFalse(configElement.isEnabled());
         }
     }

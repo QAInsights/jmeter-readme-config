@@ -1,6 +1,6 @@
-# README Sampler - JMeter Plugin
+# README Config Element - JMeter Plugin
 
-> A JMeter sampler that lets you embed **Markdown documentation** directly inside your test plan  with a live GitHub-style preview and deep-link navigation to tree nodes.
+> A JMeter Config Element that lets you embed **Markdown documentation** directly inside your test plan  with a live GitHub-style preview and deep-link navigation to tree nodes.
 
 ## Screenshots
 ![Markdown](./images/Markdown.png)
@@ -13,9 +13,9 @@
 
 ## What is it?
 
-**README Sampler** adds a documentation node to any JMeter test plan. It renders Markdown with a live preview panel so teams can keep context, runbooks, or notes right alongside the samplers they describe.
+**README Config Element** adds a documentation node to any JMeter test plan. It renders Markdown with a live preview panel so teams can keep context, runbooks, or notes right alongside the samplers they describe.
 
-The sampler is **always disabled**  it never fires during a test run and has zero performance impact. It is purely a documentation artifact.
+The Config Element is **always disabled**  it never fires during a test run and has zero performance impact. It is purely a documentation artifact.
 
 ---
 
@@ -61,7 +61,7 @@ The `maven-antrun-plugin` copies the fat-jar to `$JMETER_HOME/lib/ext` automatic
 
 ```bash
 mvn clean package
-cp target/readme-sampler-0.0.1-jar-with-dependencies.jar $JMETER_HOME/lib/ext/
+cp target/readme-config-element-0.0.1-jar-with-dependencies.jar $JMETER_HOME/lib/ext/
 ```
 
 Restart JMeter after copying.
@@ -70,7 +70,7 @@ Restart JMeter after copying.
 
 ## Usage
 
-1. Right-click any node in the test plan tree → **Add → Sampler → README Sampler**
+1. Right-click any node in the test plan tree → **Add → Config Element → README Config Element**
 2. Type Markdown in the **Write** tab
 3. Switch to the **Preview** tab to see the rendered output
 
@@ -90,7 +90,7 @@ A warning dialog is shown if the node cannot be found.
 ## Building
 
 ```bash
-mvn clean package          # produces target/readme-sampler-0.0.1-jar-with-dependencies.jar
+mvn clean package          # produces target/readme-Config Element-0.0.1-jar-with-dependencies.jar
 mvn test                   # runs JUnit 5 unit tests
 ```
 
