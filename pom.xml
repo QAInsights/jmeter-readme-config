@@ -10,7 +10,7 @@
 
     <name>ReadMe Config Element</name>
     <description>A JMeter config element that renders markdown within test plans, with hyperlink navigation for step-by-step manual test execution.</description>
-    <url>https://github.com/qainsights/readme-sampler</url>
+    <url>https://github.com/QAInsights/jmeter-readme-config</url>
 
     <licenses>
         <license>
