@@ -3,11 +3,10 @@
 > A JMeter Config Element that lets you embed **Markdown documentation** directly inside your test plan  with a live GitHub-style preview and deep-link navigation to tree nodes.
 
 ## Screenshots
-![Markdown](./images/Markdown.png)
 ![Preview](./images/MarkdownPreview.png)
+![Markdown](./images/Markdown.png)
 ![JMeter Deep Link](./images/JMeterDeeplink.png)
 ![No Node](./images/NoNode.png)
-![Always Disabled](./images/Disabled.png)
 
 ---
 
