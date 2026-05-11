@@ -28,8 +28,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/qainsights/readme-sampler.git</connection>
-        <url>https://github.com/qainsights/readme-sampler</url>
+        <connection>scm:git:https://github.com/QAInsights/jmeter-readme-config.git</connection>
+        <url>https://github.com/QAInsights/jmeter-readme-config</url>
     </scm>
 
     <properties>
